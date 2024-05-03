@@ -6,10 +6,11 @@ import { AuthService } from './services/auth/auth.service';
 import { DbconnectionService } from './config/db-connection/db-connection.service';
 import { PrismaModule } from './db-prisma/prisma-module.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import {JwtModule} from '@nestjs/jwt';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
-  imports: [PrismaModule, 
+  imports: [
+    PrismaModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -17,7 +18,7 @@ import {JwtModule} from '@nestjs/jwt';
         signOptions: { expiresIn: '1h' },
       }),
       inject: [ConfigService],
-    })
+    }),
   ],
   controllers: [AppController, AuthController],
   providers: [AppService, DbconnectionService, AuthService],
