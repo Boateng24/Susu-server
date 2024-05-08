@@ -27,3 +27,13 @@ export class loginDto {
   @IsNotEmpty({ message: 'Password is required' })
   password: string;
 }
+
+export class resetDto {
+  @IsString()
+  @IsNotEmpty({ message: 'Password is required' })
+  password: string;
+
+  @IsString()
+  @IsNotEmpty({ message: 'Confirm password' })
+  confirmPassword: string;
+}

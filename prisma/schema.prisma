@@ -19,4 +19,5 @@ model User {
   fullname             String
   email                String            @unique
   password             String
+  token                String? 
 }
